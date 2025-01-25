@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Pompiere&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap');
+
+
+.main_layout_body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* min-height: 130%; */
+    /* min-width: 130%; */
+    background-image: url('/void.png');
+    background-size : cover;
+    background-repeat: yes-repeat;
+    background-position: center;
+}
+
+
+.buying_form {
+    display: flex;
+    top: 20%;
+    left: 10%;
+    /* flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; */
+}
+
+.offstar {
+    /*background-color: yellow; /* Just for visibility */
+    border-radius: 50%;
+    background-image: url('/offstar.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    cursor: pointer;
+    z-index: 102; /* Ensure it's above other elements */
+  }
+
+  .nft {
+    border-radius: 50%;
+    background-image: url('/star.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed; /* Change to fixed for viewport-relative positioning */
+    top: 50%; /* Vertically center */
+    left: 50%; /* Horizontally center */
+    transform: translate(-50%, -50%); /* Center by adjusting position */
+    cursor: pointer;
+    z-index: 100;
+    width: 1000px; /* Set a fixed width */
+    height: 1000px; /* Set a fixed height */
+  }
+  
+  .buyablestar {
+    border-radius: 50%;
+    background-image: url('/offstar.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed; /* Change to fixed for viewport-relative positioning */
+    top: 50%; /* Vertically center */
+    left: 50%; /* Horizontally center */
+    transform: translate(-50%, -50%); /* Center by adjusting position */
+    cursor: pointer;
+    z-index: 100;
+    width: 1000px; /* Set a fixed width */
+    height: 1000px; /* Set a fixed height */
+  }
+  
+/* .offstar {
+    position: absolute;
+    background-image: url('/offstar.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+} */
+
+.star {
+    position: absolute;
+    background-image: url('/star.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 100;
+}
+  
+.star_light {
+    position: absolute;
+    background-image: url('/starlight.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: pulsatelight 5s ease-in-out infinite;
+    cursor: pointer;
+    z-index: 101;
+}
+
+@keyframes pulsatelight {
+0% {
+    opacity: 0.5;
+    transform: scale(1);
+}
+50% {
+    opacity: 1;
+    transform: scale(1.1);
+}
+100% {
+    opacity: 0.5;
+    transform: scale(1);
+}
+}
+.main_layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 30vh;
+    z-index: 1;
+    gap: 80px;
+}
+
+.searchbar {
+    width: 80%;
+}
+
+.Main_title {
+    font-family: "Pompiere", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 10rem;
+    color: aliceblue;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
