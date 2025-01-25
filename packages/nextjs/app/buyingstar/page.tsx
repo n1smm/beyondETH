@@ -1,5 +1,4 @@
 "use client";
-
 // import type { NextPage } from "next";
 // import { useAccount } from "wagmi";
 // import { Address } from "~~/components/scaffold-eth";
@@ -11,7 +10,7 @@ import "../../styles/globals.css";
 import Styles from "../styles/layout.module.css";
 // import { SwitchingPage } from "~~/components/Switching";
 import { useRouter } from "next/navigation";
-
+import pageStyles from "../styles/pageStar.module.css";
 // import { useCallback } from "react";
 // import DatePicker, { DatePickerProps } from 'react-datepicker';
 // import 'react-datepicker/dist/react-datepicker.css';
@@ -39,9 +38,6 @@ class StarData {
     this.input3 = value;
   }
 }
-
-
-
 
 const ShopStar = () => {
 
@@ -100,39 +96,17 @@ const ShopStar = () => {
 
 
     return (
-      <div>
+      <div className={pageStyles.popupbox}>
         <button
             onClick={goBack}
-            style={{
-                display: "flex",
-                position: "absolute",
-                top: "85%",
-                left: "5%",
-                // alignItems: "center",
-                justifyContent: "center",
-                padding: "10px 20px",
-                backgroundColor: "transparent",
-                border: "none",
-                borderRadius: "8px",
-                cursor: "pointer",
-                fontFamily: "'Pompiere', serif",
-                fontSize: "30px",
-                lineHeight: "5px",
-                // fontWeight: "light",
-                color: "white",
-                // justifyContent: "flex-start",
-            }}
+            //className = {pageStyles.buttonBack}
             >
                 <img
                 src="/arrow.png"
                 alt="Button Icon"
-                style={{
-                    width: "150px",
-                    height: "70px",
-                    // verticalAlign: "middle"
-                }}
+                //className= {pageStyles.buttonImg}
                 />
-                go back to Space
+                Back to Space
             </button>
         <h1>A lonely star...</h1>
         <div>
