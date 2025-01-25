@@ -19,7 +19,15 @@ import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaff
 const Home: NextPage = () => {
   // const { address: connectedAddress } = useAccount();
   const [imgSrc, setImgSrc] = useState("/searchbar.png");
+  const [fade, setFade] = useState(false);
   let typingTimeout: NodeJS.Timeout;
+
+  const handleFade = () => {
+    setFade(true);
+    setTimeout(() => {
+      setFade(false);
+    }, 1000);
+  }
 
   const handleInputChange = () => {
     clearTimeout(typingTimeout);
@@ -60,7 +68,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-    <div className={Styles.main_layout}>
+    <div className={`${Styles.main_layout} ${fade ? Styles.fade_out : ''}`}>
       <h1 className={Styles.Main_title}>beyondETH</h1>
       <form onSubmit={handleInputSubmit}>
         <input className="input"
@@ -70,7 +78,7 @@ const Home: NextPage = () => {
           />
       </form>
       <img src={imgSrc} className={Styles.searchbar} />
-      <SwitchingPage />
+      <SwitchingPage onFadeOut={handleFade}/>
       {/* <RainbowKitCustomConnectButton /> */}
       {/* <StellarScene /> */}
       {/* <form onSubmit={handleInputSubmit}>

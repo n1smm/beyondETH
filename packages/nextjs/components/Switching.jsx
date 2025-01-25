@@ -7,15 +7,21 @@ import { useRouter } from 'next/navigation';
 
 import Link from "next/link";
 
-export const SwitchingPage = () => {
+export const SwitchingPage = ({ onFadeOut }) => {
     const router = useRouter();
   
     const selectTutorial = () => {
-        router.push('/tutorial');
+        onFadeOut();
+        setTimeout(() => {
+            router.push('/tutorial');
+            }, 1000);
       };
 
     const selectSpace = () => {
-        router.push('/space');
+        onFadeOut();
+        setTimeout(() => {
+            router.push('/space');
+            }, 1000);
       };
     
     return (

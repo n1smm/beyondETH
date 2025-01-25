@@ -151,7 +151,13 @@
     min-height: 30vh;
     z-index: 1;
     gap: 80px;
+    transition: opacity 1s ease-in-out;
 }
+
+.main_layout.fade_out {
+    opacity: 0;
+}
+
 
 .searchbar {
     width: 80%;
