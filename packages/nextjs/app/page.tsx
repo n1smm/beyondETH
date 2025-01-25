@@ -9,7 +9,7 @@ import { useState } from "react";
 // import StellarScene from "../components/StellarScene.jsx";
 import "../styles/globals.css";
 import { SwitchingPage } from "../components/Switching";
-
+import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 // import dynamic from 'next/dynamic';
 
 // const SwitchingPage = dynamic(() => import('../components/Switching').then((mod) => mod.SwitchingPage), {
@@ -71,6 +71,7 @@ const Home: NextPage = () => {
       </form>
       <img src={imgSrc} className={Styles.searchbar} />
       <SwitchingPage />
+      {/* <RainbowKitCustomConnectButton /> */}
       {/* <StellarScene /> */}
       {/* <form onSubmit={handleInputSubmit}>
         <input className="input"
