@@ -3,6 +3,8 @@ pragma solidity ^0.8.22;
 import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
+//LOT - layer one token
+//LTT - layer two token - this have asociation to LOT
 
 contract	TokenCenter is ERC721, Ownable 
 {
@@ -20,7 +22,6 @@ contract	TokenCenter is ERC721, Ownable
 
 	///VARS
 
-	//layer one token vars
 	//content associated with the token
 	struct LayerOneInfo
 	{
@@ -28,9 +29,11 @@ contract	TokenCenter is ERC721, Ownable
 		string	date;
 	}
 	//storing owners of tokens
-	mapping(uint256 => address) layerOneBank; // --- not neccesary layerOneToken.ownerOf(token)
+	// mapping(uint256 => address) layerOneBank; // --- not neccesary layerOneToken.ownerOf(token)
 	//storing content of tokens
 	mapping(uint256 => LayerOneInfo) public layerOneInfoBank;
+	//number of LTT connected to each LOT
+	mapping(uint256 => uint256) public	LLTStored;
 	//price of LOT
 	uint256	public priceLOT = 0.0001 * 10**18;
 	//id state of LOT
@@ -57,7 +60,6 @@ contract	TokenCenter is ERC721, Ownable
 
 		uint256 tokenId = ++_tokenCountLOT;
 		_safeMint(msg.sender, tokenId);
-		layerOneBank[tokenId] = msg.sender;
 		layerOneInfoBank[tokenId] = LayerOneInfo({
 			fullName: _name,
 			date: _date
@@ -96,5 +98,19 @@ contract	TokenCenter is ERC721, Ownable
 		require(_ownerOf(tokenId) != address(0), "This Star is not populated yet");
 		return (layerOneInfoBank[tokenId].date);
 	}
+
+
+	///		INTERACTION WITH LTTs
+	//increment LTTs sotored on one LOT
+	function incrementLLT(uint256 tokenId) external
+	{
+		LLTStored[tokenId]++;
+	}
+	//get LTTs stored for one LOT
+	function getLLTperLOT(uint256 tokenId) external view returns(uint256)
+	{
+		return(LLTStored[tokenId]);
+	}
+
 
 }

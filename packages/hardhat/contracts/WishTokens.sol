@@ -5,6 +5,11 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import "./TokenCenter.sol";
 
+
+//LOT - layer one token
+//LTT - layer two token - this have association with LOT
+// only uint256 LTTLimit number of LLT tokens allowed per 1 LOT
+
 contract	WishTokens is ERC721, Ownable
 {
 
@@ -16,17 +21,21 @@ contract	WishTokens is ERC721, Ownable
 	///VARS
 
 	//storing owners
-	mapping(uint256 => address) public layerTwoBank;
+	// mapping(uint256 => address) public layerTwoBank;
 	//storing content
 	mapping(uint256 => string) public layerTwoInfoBank;
-	//connection to apropriate LOT token
+	//connection to appropriate LOT token
 	mapping(uint256 => uint256) public layerTolayerConnection;
 	//price of LTT
 	uint256	public	priceLTT = 0.0001 * 10**18;
 	//id state of LTT
 	uint256	private	_tokenCountLTT;
+	//max LLT tokens for one LOT
+	uint256	private	LTTLimit = 2;
 
+	//address to TokenCenter
 	address public tokenCenterContract;
+	
 
 
 
@@ -52,11 +61,16 @@ contract	WishTokens is ERC721, Ownable
 		if (refund > 0)
 			payable(msg.sender).transfer(refund);
 
+		TokenCenter tokenCenter = TokenCenter(tokenCenterContract);
+		require(IERC721(tokenCenterContract).ownerOf(LOTid) != address(0), "No star exist for your wish");
+		
+		require(tokenCenter.getLLTperLOT(LOTid) < LTTLimit, "No more wishesh can be made at this time");
+		// require(IERC721(tokenCenterContract).getLLTperLOT(LOTid) <= LTTLimit, "No more wishesh can be made at this time");
 		uint256 tokenId = ++_tokenCountLTT;
+		tokenCenter.incrementLLT(LOTid);
+		// IERC721(tokenCenterContract).incrementLLT(LOTid);
 		_safeMint(msg.sender, tokenId);
-		layerTwoBank[tokenId] = msg.sender;
 		layerTwoInfoBank[tokenId] = wish;
-		require(IERC721(tokenCenterContract).ownerOf(LOTid) != address(0), "error");
 		layerTolayerConnection[tokenId] = LOTid;
 		emit Minted(tokenId, msg.sender);
 	}		
