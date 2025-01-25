@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 // import type { NextPage } from "next";
 // import { useAccount } from "wagmi";
 // import { Address } from "~~/components/scaffold-eth";
@@ -11,6 +11,7 @@ import "../../styles/globals.css";
 import Styles from "../styles/layout.module.css";
 // import { SwitchingPage } from "~~/components/Switching";
 import { useRouter } from "next/navigation";
+import PageStarStyle from "../styles/pageStar.module.css";
 
 // import { useCallback } from "react";
 // import DatePicker, { DatePickerProps } from 'react-datepicker';
@@ -39,9 +40,7 @@ class StarData {
     this.input3 = value;
   }
 }
-
-
-
+export let formDataUser : string = " ";
 
 const ShopStar = () => {
 
@@ -54,18 +53,34 @@ const ShopStar = () => {
   // console.log(router);
   const [starData, setStarData] = useState<StarData>(new StarData());
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    formDataUser = JSON.stringify(starData);
+    setStarData(new StarData());
+    //alert(`Submitted: ${outputData}`);
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, inputType: string) => {
     const value = e.target.value;
     const updatedData = new StarData();
     updatedData.input1 = starData.input1;
     updatedData.input2 = starData.input2;
     updatedData.input3 = starData.input3;
+    const currentDate = new Date().toISOString().split('T')[0];
 
     if (inputType === 'input1') {
       updatedData.setInput1(value);
     } else if (inputType === 'input2') {
+      if (value > currentDate) {
+        alert('Date of birth cannot be in the future.');
+        return;
+      }
       updatedData.setInput2(value);
     } else if (inputType === 'input3') {
+      if (value > currentDate || value < starData.input2) {
+        alert('Date of departure cannot be in the future or before date of birth.');
+        return;
+      }
       updatedData.setInput3(value);
     }
 
@@ -100,74 +115,58 @@ const ShopStar = () => {
 
 
     return (
-      <div>
+      <div className={PageStarStyle.popuplayout}>
+        <h1 className={PageStarStyle.title}>A lonely star...</h1>
+        <form className={PageStarStyle.form} onSubmit={handleSubmit}>
+          <div>
+            {/* <label htmlFor="input1">Input 1: </label> */}
+            <label className={PageStarStyle.label} htmlFor="input1">Name</label>
+            <input className={PageStarStyle.inputform}
+              id="input1"
+              type="text"
+              value={starData.input1}
+              placeholder="eg. John Snow"
+              onChange={(e) => handleInputChange(e, 'input1')}
+              required
+            />
+          </div>
+          
+          <div>
+            {/* <label htmlFor="input2">Input 2: </label> */}
+            <label className={PageStarStyle.label} htmlFor="input2">Date of Birth</label>
+            <input className={PageStarStyle.inputformdate}
+              id="input2"
+              type="date"
+              value={starData.input2}
+              onChange={(e) => handleInputChange(e, 'input2')}
+            />
+          </div>
+    
+          <div>
+            {/* <label htmlFor="input3">Input 3: </label> */}
+            <label className={PageStarStyle.label} htmlFor="input3">Date of Departure</label>
+            <input  className={PageStarStyle.inputformdate}
+              id="input3"
+              type="date"
+              placeholder="Date of Departure"
+              value={starData.input3}
+              onChange={(e) => handleInputChange(e, 'input3')}
+              required
+            />
+          </div>
+          <button className={PageStarStyle.submitButton} type="submit">Submit</button>
+        </form>
         <button
             onClick={goBack}
-            style={{
-                display: "flex",
-                position: "absolute",
-                top: "85%",
-                left: "5%",
-                // alignItems: "center",
-                justifyContent: "center",
-                padding: "10px 20px",
-                backgroundColor: "transparent",
-                border: "none",
-                borderRadius: "8px",
-                cursor: "pointer",
-                fontFamily: "'Pompiere', serif",
-                fontSize: "30px",
-                lineHeight: "5px",
-                // fontWeight: "light",
-                color: "white",
-                // justifyContent: "flex-start",
-            }}
+            className={PageStarStyle.backButton}
             >
                 <img
                 src="/arrow.png"
                 alt="Button Icon"
-                style={{
-                    width: "150px",
-                    height: "70px",
-                    // verticalAlign: "middle"
-                }}
+                className={PageStarStyle.imgButton}
                 />
                 go back to Space
             </button>
-        <h1>A lonely star...</h1>
-        <div>
-          {/* <label htmlFor="input1">Input 1: </label> */}
-          <input className="form"
-            id="input1"
-            type="text"
-            value={starData.input1}
-            placeholder="Name"
-            onChange={(e) => handleInputChange(e, 'input1')}
-          />
-        </div>
-        
-        <div>
-          {/* <label htmlFor="input2">Input 2: </label> */}
-          <input className="form"
-            id="input2"
-            type="date"
-            value={starData.input2}
-            placeholder="Name"
-            onChange={(e) => handleInputChange(e, 'input2')}
-          />
-
-        </div>
-  
-        <div>
-          {/* <label htmlFor="input3">Input 3: </label> */}
-          <input className="form"
-            id="input3"
-            type="date"
-            value={starData.input3}
-            onChange={(e) => handleInputChange(e, 'input3')}
-            required
-          />
-        </div>
       </div>
     );
   
