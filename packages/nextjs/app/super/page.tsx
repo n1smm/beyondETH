@@ -48,6 +48,7 @@ class StarData {
 }
 
 
+
 const ShopStar = () => {
   const [starData, setStarData] = useState({ input1: "", input2: "" });
 

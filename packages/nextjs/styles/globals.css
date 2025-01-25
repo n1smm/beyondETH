@@ -8,30 +8,32 @@ html, body {
   font-family: "Pompiere", serif;
   height: 100%;
   margin: 0; /* Remove default margin */
-  min-height: 130%;
+  min-height: 100%;
   background-image: url('/void.png'); /* Path to your image */
   background-size: cover; /* Make the background cover the full screen */
   /* background-repeat: no-repeat; Prevent repeating */
   background-position: center; /* Center the background image */
   /* cursor: url('/path-to-your-cursor-image.png'), auto; */
   z-index: -1;
-}
-
-body {
+  min-height: 100vh;
   cursor: url('/cursor.png'), auto;
 }
 
+/* body {
+  cursor: url('/cursor.png'), auto;
+} */
+
 /* Pointer cursor image (for clickable elements) */
-a, button {
+/* a, button {
   cursor: url('/pointer.png'), pointer;
-}
+} */
 
 
 .pompiere-regular {
   font-family: "Pompiere", serif;
   font-weight: 400;
   font-style: normal;
-  background-image: url('');
+  /* background-image: url(''); */
 }
 
 :root,
@@ -39,9 +41,9 @@ a, button {
   background: oklch(var(--b2));
 }
 
-body {
+/* body {
   min-height: 100vh;
-}
+} */
 
 h1,
 h2,

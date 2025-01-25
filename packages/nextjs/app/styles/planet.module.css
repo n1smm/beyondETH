@@ -1,0 +1,130 @@
+/* @import './utils.module.css'; */
+
+@keyframes rotatePlanet {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  .buyableplanet {
+    animation: rotatePlanet 10s linear infinite;
+    border-radius: 50%;
+    background-image: url('/planet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative; /* Change to fixed for viewport-relative positioning */
+    top: 40%; /* Vertically center */
+    left: 70%; /* Horizontally center */
+    transform: translate(-50%, -50%);  /* Horizontally center */
+    cursor: pointer;
+    z-index: 102;
+    scale: 4;
+    /* width: 1000px; /* Set a fixed width */
+    /* height: 1000px; Set a fixed height */
+  }
+
+.planet1 {
+    animation: rotatePlanet 10s linear infinite;
+    border-radius: 50%;
+    background-image: url('/planet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative; /* Change to fixed for viewport-relative positioning */
+    top: 40%; /* Vertically center */
+    left: 25%; /* Horizontally center */
+    transform: translate(-50%, -50%); /* Center by adjusting position */
+    cursor: pointer;
+    z-index: 102;
+    scale: 4;
+    /* width: 1000px; /* Set a fixed width */
+    /* height: 1000px; Set a fixed height */
+  }
+
+  .planet2 {
+    animation: rotatePlanet 15s linear infinite;
+    border-radius: 50%;
+    background-image: url('/planet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative; /* Change to fixed for viewport-relative positioning */
+    top: 65%; /* Vertically center */
+    right: 18%; /* Horizontally center */
+    transform: translate(-50%, -50%); /* Center by adjusting position */
+    cursor: pointer;
+    z-index: 102;
+    scale: 4;
+    /* width: 1000px; /* Set a fixed width */
+    /* height: 1000px; Set a fixed height */
+  }
+
+  .planet3 {
+    animation: rotatePlanet 9s linear infinite;
+    border-radius: 50%;
+    background-image: url('/planet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative; /* Change to fixed for viewport-relative positioning */
+    top: 12%; /* Vertically center */
+    left: 65%; /* Horizontally center */
+    transform: translate(-50%, -50%); /* Center by adjusting position */
+    cursor: pointer;
+    z-index: 102;
+    scale: 4;
+    /* width: 1000px; /* Set a fixed width */
+    /* height: 1000px; Set a fixed height */
+  }
+
+  .boughtplanet1 {
+    animation: rotatePlanet 10s linear infinite;
+    border-radius: 50%;
+    background-image: url('/boughtplanet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative; /* Change to fixed for viewport-relative positioning */
+    top: 12%; /* Vertically center */
+    left: 65%; /* Horizontally center */
+    transform: translate(-50%, -50%); /* Center by adjusting position */
+    cursor: pointer;
+    z-index: 102;
+    scale: 4;
+    /* width: 1000px; /* Set a fixed width */
+    /* height: 1000px; Set a fixed height */
+  }
+
+  .boughtplanet2 {
+    animation: rotatePlanet 15s linear infinite;
+    border-radius: 50%;
+    background-image: url('/boughtplanet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative; /* Change to fixed for viewport-relative positioning */
+    top: 12%; /* Vertically center */
+    left: 65%; /* Horizontally center */
+    transform: translate(-50%, -50%); /* Center by adjusting position */
+    cursor: pointer;
+    z-index: 102;
+    scale: 4;
+    /* width: 1000px; /* Set a fixed width */
+    /* height: 1000px; Set a fixed height */
+  }
+
+  .boughtplanet3 {
+    animation: rotatePlanet 9s linear infinite;
+    border-radius: 50%;
+    background-image: url('/boughtplanet.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative; /* Change to fixed for viewport-relative positioning */
+    top: 12%; /* Vertically center */
+    left: 65%; /* Horizontally center */
+    transform: translate(-50%, -50%); /* Center by adjusting position */
+    cursor: pointer;
+    z-index: 102;
+    scale: 4;
+    /* width: 1000px; /* Set a fixed width */
+    /* height: 1000px; Set a fixed height */
+  }
