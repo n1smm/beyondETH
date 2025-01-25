@@ -73,27 +73,33 @@ const ShopStar = () => {
   };
 
   useEffect(() => {
-    const createOffstar = (className: string, index: number) => {
+    const createOffstar = (className: string, classNamee: string, index: number) => {
       const image = document.createElement("div");
+      const imagee = document.createElement("div");
       image.className = className;
+      imagee.className = classNamee;
       image.style.position = "absolute";
+      imagee.style.position = "absolute";
       const size = `10vw`; 
-      image.style.width = image.style.height = size;
+      image.style.width = image.style.height = imagee.style.width = imagee.style.height = size;
       const rotation = `${Math.random() * 360}deg`;
+      imagee.style.transform = `rotate(${rotation})`;
       image.style.transform = `rotate(${rotation})`;
 
       const destination = index === 0 ? "/buyingstar" : "/buyingstar";
 
-      image.addEventListener("click", () => {
-        console.log(`Offstar ${index} clicked`); 
-        if (router) router.push(destination);
-      });
+      // image.addEventListener("click", () => {
+      //   console.log(`Offstar ${index} clicked`); 
+      //   if (router) router.push(destination);
+      // });
 
       document.body.appendChild(image);
+      document.body.appendChild(imagee);
     };
-    createOffstar(Styles.nft, 0);
+    createOffstar(Styles.boughtstar, Styles.boughtstar_light, 0);
     return () => {
-      document.querySelectorAll(`.${Styles.nft}`).forEach((nft) => nft.remove());
+      document.querySelectorAll(`.${Styles.boughtstar}`).forEach((nft) => nft.remove());
+      document.querySelectorAll(`.${Styles.boughtstar_light}`).forEach((nft) => nft.remove());
 
       };
     }, [router]);

@@ -52,6 +52,12 @@ const Space = () => {
     for (let i = 0; i < 5; i++) {
       createStar(Styles.star, Styles.star_light);
     }
+    return () => {
+      document.querySelectorAll(`.${Styles.offstar}`).forEach((offstar) => offstar.remove());
+      document.querySelectorAll(`.${Styles.star}`).forEach((star) => star.remove());
+      document.querySelectorAll(`.${Styles.star_light}`).forEach((star_light) => star_light.remove());
+
+      };
   }, [router]);
 
   useEffect(() => {

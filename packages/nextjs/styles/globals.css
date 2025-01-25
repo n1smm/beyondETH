@@ -13,7 +13,19 @@ html, body {
   background-size: cover; /* Make the background cover the full screen */
   /* background-repeat: no-repeat; Prevent repeating */
   background-position: center; /* Center the background image */
+  /* cursor: url('/path-to-your-cursor-image.png'), auto; */
+  z-index: -1;
 }
+
+body {
+  cursor: url('/cursor.png'), auto;
+}
+
+/* Pointer cursor image (for clickable elements) */
+a, button {
+  cursor: url('/pointer.png'), pointer;
+}
+
 
 .pompiere-regular {
   font-family: "Pompiere", serif;
