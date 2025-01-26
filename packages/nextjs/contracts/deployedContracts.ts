@@ -3477,7 +3477,7 @@ const deployedContracts = {
   },
   421614: {
     TokenCenter: {
-      address: "0x61A571Cfb2F68D6642A85bBD695003497c1b1DB2",
+      address: "0xb34dd00ec7a123E93CC03c6cb095Fcdc91aa5f49",
       abi: [
         {
           inputs: [
@@ -4291,7 +4291,7 @@ const deployedContracts = {
       },
     },
     WishTokens: {
-      address: "0xAA3038a628dC0886C7a698167E102C66696604E4",
+      address: "0x09C22D866839e0210C2F1A272dd7D53995B5ceBa",
       abi: [
         {
           inputs: [
