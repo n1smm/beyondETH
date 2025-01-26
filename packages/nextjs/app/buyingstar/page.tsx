@@ -12,6 +12,7 @@ import Styles from "../styles/layout.module.css";
 // import { SwitchingPage } from "~~/components/Switching";
 import { useRouter } from "next/navigation";
 import PageStarStyle from "../styles/pageStar.module.css";
+import { getJsonFromIPFS, uploadJsonToIPFS } from "../../utils/pinata/pinataUtils";
 
 // import { useCallback } from "react";
 // import DatePicker, { DatePickerProps } from 'react-datepicker';
@@ -55,8 +56,15 @@ const ShopStar = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    formDataUser = JSON.stringify(starData);
+    // formDataUser = JSON.stringify(starData);
+	const formDataUser = {
+		input1: starData.input1,
+		input2: starData.input2,
+		input3: starData.input3,
+	};
     setStarData(new StarData());
+	console.log("form data: " + formDataUser);
+	const hash = uploadJsonToIPFS(formDataUser);
     //alert(`Submitted: ${outputData}`);
   };
 
@@ -84,6 +92,7 @@ const ShopStar = () => {
       updatedData.setInput3(value);
     }
 
+	console.log("form data: " + formDataUser);
     setStarData(updatedData);
   };
 
