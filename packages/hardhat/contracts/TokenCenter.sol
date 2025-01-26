@@ -36,7 +36,7 @@ contract	TokenCenter is ERC721, Ownable, ERC721URIStorage
 	//number of LTT connected to each LOT
 	mapping(uint256 => uint256) public	LLTStored;
 	//price of LOT
-	uint256	public priceLOT = 0.0001 * 10**18;
+	uint256	public priceLOT = 100000000000000;
 	//id state of LOT
 	uint256	private _tokenCountLOT;
 

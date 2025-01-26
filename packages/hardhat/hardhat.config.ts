@@ -40,7 +40,7 @@ const config: HardhatUserConfig = {
       },
     ],
   },
-  defaultNetwork: "localhost",
+  defaultNetwork: "holesky",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -160,6 +160,10 @@ const config: HardhatUserConfig = {
       url: "https://alfajores-forno.celo-testnet.org",
       accounts: [deployerPrivateKey],
     },
+	holesky: {
+		url: "https://ethereum-holesky-rpc.publicnode.com",
+		accounts: [deployerPrivateKey],
+	},
   },
   // configuration for harhdat-verify plugin
   etherscan: {
