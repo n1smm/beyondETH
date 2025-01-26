@@ -1,25 +1,12 @@
-// import * as dotenv from "dotenv";
-// dotenv.config();
-// import path from "path";
+import * as dotenv from "dotenv";
+dotenv.config();
 import { PinataSDK } from "pinata-web3";
 
-// const envPath : DotenvConfigOptions = { path: "/home/thiew/code_tuts_other/beyondETH/packages/nextjs/.env" };
-// dotenv.config(envPath);
-// console.log("envPath", envPath);
-// // dotenv.config({ path: path.resolve(__dirname, "../../.env") });
-
-// const envPath = path.resolve(__dirname, "pinataUtils.ts");
-// console.log("envPath", envPath);
-
-// alert("PINATA_JWT" + process.env.PINATA_JWT);
-// alert("PINATA_GATEWAY_DOMAIN" + process.env.PINATA_GATEWAY_DOMAIN);
-// console.log("PINATA_JWT" + process.env.PINATA_JWT);
-// console.log("PINATA_GATEWAY_DOMAIN" + process.env.PINATA_GATEWAY_DOMAIN);
 const pinata = new PinataSDK({	
-	pinataJwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJkMGU2ZWQ2MC05NTZkLTQ2NzMtODMxNi1mZTllYzFjZTViOWUiLCJlbWFpbCI6InRqYXouanV2YW5AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjEsImlkIjoiRlJBMSJ9LHsiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjEsImlkIjoiTllDMSJ9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6Ijk3NTJkNGU1Njg4ZjBhMGI2MTY1Iiwic2NvcGVkS2V5U2VjcmV0IjoiNGQ2ODFjNmJlMzJkOGVkZmY1M2E5OTRhMDZjOWNmZjY1YWU4MjkzNDAyMzMyNzUyYjM4OWQ0ZGE4YzgyOWRkZSIsImV4cCI6MTc2OTM2NjQ3NX0.BO9Gp5B7pImLw4rh9mvaPlrt99PVwdnxUyFFx9z309E",
-	pinataGateway: "violet-charming-swan-287.mypinata.cloud",
-	// pinataJwt: process.env.PINATA_JWT || "",
-	// pinataGateway: process.env.PINATA_GATEWAY_DOMAIN || "",
+	// pinataJwt: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJkMGU2ZWQ2MC05NTZkLTQ2NzMtODMxNi1mZTllYzFjZTViOWUiLCJlbWFpbCI6InRqYXouanV2YW5AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjEsImlkIjoiRlJBMSJ9LHsiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjEsImlkIjoiTllDMSJ9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6Ijk3NTJkNGU1Njg4ZjBhMGI2MTY1Iiwic2NvcGVkS2V5U2VjcmV0IjoiNGQ2ODFjNmJlMzJkOGVkZmY1M2E5OTRhMDZjOWNmZjY1YWU4MjkzNDAyMzMyNzUyYjM4OWQ0ZGE4YzgyOWRkZSIsImV4cCI6MTc2OTM2NjQ3NX0.BO9Gp5B7pImLw4rh9mvaPlrt99PVwdnxUyFFx9z309E",
+	// pinataGateway: "violet-charming-swan-287.mypinata.cloud",
+	pinataJwt: process.env.NEXT_PUBLIC_PINATA_JWT || "",
+	pinataGateway: process.env.NEXT_PUBLIC_PINATA_GATEWAY_DOMAIN || "",
 	// process.env.PINATA_API_KEY || "",
 	// process.env.PINATA_SECRET_API_KEY	|| ""
 });
