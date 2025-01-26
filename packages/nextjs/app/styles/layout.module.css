@@ -12,7 +12,7 @@
     /* min-width: 130%; */
     background-image: url('/void.png');
     background-size : cover;
-    background-repeat: yes-repeat;
+    /* background-repeat: yes-repeat; */
     background-position: center;
 }
 

@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Pompiere&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap');
+
+.fullblok {
+    font-size: 40px;
+    position: relative;
+    display: flex ;
+    flex-direction: column;
+    color: black;
+    text-align: center;
+    margin-left: 220px;
+    margin-top: 40px;
+}
+
+.fullblok h1 {
+    z-index: 200;
+}
+
+.fullblok p {
+    z-index: 200;
+}
