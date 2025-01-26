@@ -4,13 +4,14 @@ import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import "./TokenCenter.sol";
+import {ERC721URIStorage} from "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 
 //LOT - layer one token
 //LTT - layer two token - this have association with LOT
 // only uint256 LTTLimit number of LLT tokens allowed per 1 LOT
 
-contract	WishTokens is ERC721, Ownable
+contract	WishTokens is ERC721, Ownable, ERC721URIStorage
 {
 
 	///EVENTS
@@ -54,7 +55,7 @@ contract	WishTokens is ERC721, Ownable
 	///		LAYER TWO
 
 	//create layer two token
-	function mintTokenTwo(string memory wish, uint256 LOTid) public payable
+	function mintTokenTwo(string memory wish, uint256 LOTid, string memory uri) public payable
 	{
 		require(msg.value >= priceLTT, "Sorry, you sent insufficient funds for transaction");
 		uint256 refund = msg.value - priceLTT;
@@ -70,6 +71,7 @@ contract	WishTokens is ERC721, Ownable
 		tokenCenter.incrementLLT(LOTid);
 		// IERC721(tokenCenterContract).incrementLLT(LOTid);
 		_safeMint(msg.sender, tokenId);
+		_setTokenURI(tokenId, uri);
 		layerTwoInfoBank[tokenId] = wish;
 		layerTolayerConnection[tokenId] = LOTid;
 		emit Minted(tokenId, msg.sender);
@@ -101,5 +103,24 @@ contract	WishTokens is ERC721, Ownable
 		return(layerTolayerConnection[tokenId]);
 	}
 
+	// The following functions are overrides required by Solidity.
+
+    function tokenURI(uint256 tokenId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (string memory)
+    {
+        return super.tokenURI(tokenId);
+    }
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
+    }
 
 }

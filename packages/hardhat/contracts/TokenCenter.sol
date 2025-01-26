@@ -2,11 +2,12 @@ pragma solidity ^0.8.22;
 
 import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {ERC721URIStorage} from "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 //LOT - layer one token
 //LTT - layer two token - this have asociation to LOT
 
-contract	TokenCenter is ERC721, Ownable 
+contract	TokenCenter is ERC721, Ownable, ERC721URIStorage
 {
 
 	///EVENTS
@@ -51,7 +52,7 @@ contract	TokenCenter is ERC721, Ownable
 	///			LAYER ONE
 
 	//create LOT token
-	function mintTokenOne(string memory _name, string memory _date) public payable
+	function mintTokenOne(string memory _name, string memory _date, string memory uri) public payable
 	{
 		require(msg.value >= priceLOT, "Sorry, you sent insufficient funds for transaction");
 		uint256 refund = msg.value - priceLOT;
@@ -60,6 +61,7 @@ contract	TokenCenter is ERC721, Ownable
 
 		uint256 tokenId = ++_tokenCountLOT;
 		_safeMint(msg.sender, tokenId);
+		_setTokenURI(tokenId, uri);
 		layerOneInfoBank[tokenId] = LayerOneInfo({
 			fullName: _name,
 			date: _date
@@ -111,5 +113,25 @@ contract	TokenCenter is ERC721, Ownable
 	{
 		return(LLTStored[tokenId]);
 	}
+	
+	// The following functions are overrides required by Solidity.
+
+    function tokenURI(uint256 tokenId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (string memory)
+    {
+        return super.tokenURI(tokenId);
+    }
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(ERC721, ERC721URIStorage)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
+    }
 
 }
